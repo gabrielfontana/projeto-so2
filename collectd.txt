@@ -27,8 +27,8 @@ Ubuntu
 				
 				
 				Adicionar no final: <Plugin "network">
-										Server "127.0.0.1" "25826"
-									</Plugin>
+							Server "127.0.0.1" "25826"
+						    </Plugin>
 			
 			- sudo service collectd restart
 	
