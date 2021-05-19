@@ -1,5 +1,4 @@
 # Projeto de Sistemas Operacionais II
-Projeto desenvolvido em Linux para a disciplina de Sistemas Operacionais II
 
 # Monitoramento de um sistema Arch Linux utilizando collect, InfluxDB e Grafana
 
