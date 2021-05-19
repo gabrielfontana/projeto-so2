@@ -39,38 +39,45 @@ Baixe os pacotes manualmente no site Arch archive:
 
 Instalação:
 ```sh
-pacman -U /root/Downloads/collectd-5.9.2-1-x86_64.pkg.tar.xz
+sudo pacman -U /root/Downloads/collectd-5.9.2-1-x86_64.pkg.tar.xz
 ```
 
-Baixar o arquivo types.db:
+Baixe o arquivo types.db:
 ```sh
-mkdir /usr/local/share/collectd
-wget -P /usr/local/share/collectd https://raw.githubusercontent.com/collectd/collectd/master/src/types.db
+sudo  mkdir /usr/local/share/collectd
+sudo  wget -P /usr/local/share/collectd https://raw.githubusercontent.com/collectd/collectd/master/src/types.db
 ```
-
-Configuração:
+Arquivo de configuração:
 ```sh
-nano /etc/collectd.conf
+sudo nano /etc/collectd.conf
 ```
+ Após acessar /etc/collect.conf, ative os seguintes plugins (para ativá-los, basta apagar o símbolo "#" na frente de LoadPlugin):
+|                      | Documentação |
+| -------------------- | ------------ |
+| LoadPlugin syslog    |              | 
+| LoadPlugin cpu       |              | 
+| LoadPlugin df        |              | 
+| LoadPlugin disk      |              | 
+| LoadPlugin entropy   |              | 
+| LoadPlugin interface |              | 
+| LoadPlugin irq       |              | 
+| LoadPlugin load      |              | 
+| LoadPlugin memory    |              | 
+| LoadPlugin network   |              | 
+| LoadPlugin processes |              | 
+| LoadPlugin rrdtool   |              | 
+| LoadPlugin swap      |              | 
+| LoadPlugin uptime    |              | 
+| LoadPlugin users     |              | 
 
-Após acessar /etc/collect.conf, ative os seguintes plugins (para ativá-los, basta apagar o símbolo "#" na frente de LoadPlugin):
-| Plugins   | Documentação |
-| ------    | ------------ |
-| syslog    |              | 
-| cpu       |              | 
-| df        |              | 
-| disk      |              | 
-| entropy   |              | 
-| interface |              | 
-| irq       |              | 
-| load      |              | 
-| memory    |              | 
-| network   |              | 
-| processes |              | 
-| rrdtool   |              | 
-| swap      |              | 
-| uptime    |              | 
-| users     |              | 
+## InfluxDB
 
+## Grafana
 
+# Monitoramento de um sistema Ubuntu utilizando collect, InfluxDB e Grafana
 	
+## collectd
+
+## InfluxDB
+
+## Grafana
