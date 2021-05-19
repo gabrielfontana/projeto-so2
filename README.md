@@ -1,6 +1,41 @@
 # Projeto de Sistemas Operacionais II
 
-# Monitoramento de um sistema Arch Linux utilizando collectd, InfluxDB e Grafana
+<details open="open">
+  <summary>Sumário</summary>
+  <ol>
+  <li>
+      <a href="#introdução">Introdução</a>
+      <ul>
+        <li><a href="#collectd">collectd</a></li>
+        <li><a href="#influxdb">InfluxDB</a></li>
+        <li><a href="#grafana">Grafana</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#monitoramento-de-um-sistema-arch-linux">Monitoramento de um sistema Arch Linux</a>
+    </li>
+    <li>
+      <a href="#monitoramento-de-um-sistema-ubuntu">Monitoramento de um sistema Ubuntu</a>
+    </li>
+    <li><a href="#criar-sua-primeira-dashboard-utilizando-o-grafana">Criar sua primeira dashboard utilizando o Grafana</a></li>
+  </ol>
+</details>
+
+# 1. Introdução
+
+## collectd
+
+Lançado em 8 de julho de 2005, collectd é um daemon Unix (processo executado em segundo plano) que coleta métricas de desempenho do sistema periodicamente e fornece mecanismos para armazenar ou transferir essas informações, que podem ser utilizadas para criar visualizações valiosas com o objetivo de identificar os problemas de um sistema específico. A aquisição e armazenamento de dados são tratados por plugins na forma de objetos compartilhados.
+
+## InfluxDB
+
+InfluxDB é um banco de dados de série temporal de código aberto (TSDB) desenvolvido pela InfluxData. Ele é escrito em Go e otimizado para armazenamento rápido e de alta disponibilidade e recuperação de dados de séries temporais em campos como monitoramento de operações, métricas de aplicativos, dados de sensores da Internet das Coisas e análises em tempo real.
+
+## Grafana
+
+Desenvolvido pela Grafana Labs e lançado em 19 de janeiro de 2014, Grafana é um software de código aberto multiplataforma voltado para visualização e análise. Ele permite que você consulte, visualize, alerte e explore suas métricas, independentemente de onde estejam armazenadas. Em outras palavras, ele fornece ferramentas para transformar seus dados em belos gráficos e visualizações.
+
+# 2. Monitoramento de um sistema Arch Linux
 
 Versões utilizadas neste tutorial:
 
@@ -74,10 +109,13 @@ sudo nano /etc/collectd.conf
 
 ## Grafana
 
-# Monitoramento de um sistema Ubuntu utilizando collectd, InfluxDB e Grafana
+# 3. Monitoramento de um sistema Ubuntu
 	
 ## collectd
 
 ## InfluxDB
 
 ## Grafana
+
+# 4. Criar sua primeira dashboard utilizando o Grafana
+
