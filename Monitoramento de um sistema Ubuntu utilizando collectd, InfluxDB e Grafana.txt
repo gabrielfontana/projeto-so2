@@ -1,8 +1,3 @@
-# projeto-so2
-Projeto desenvolvido em Linux para a disciplina de Sistemas Operacionais II
-
-# Monitoramento de um sistema Ubuntu utilizando collectd, InfluxDB e Grafana
-
 Versões utilizadas neste tutorial
 	Distribuição: Ubuntu 20.04.2 LTS
 	Kernel: Linux 5.8.0-53-generic
@@ -113,3 +108,11 @@ Grafana:
 		12. É possível personalizar o gráfico e a maneira como as informações são visualizadas alterando opções no lado direito em "Panel" e "Field"
 		13. Clique em "Apply" para salvar esse painel 
 		14. Clique no símbolo de disquete (Save dashboard) para salvar essa dashboard
+		
+	
+		
+		
+	
+	
+
+	

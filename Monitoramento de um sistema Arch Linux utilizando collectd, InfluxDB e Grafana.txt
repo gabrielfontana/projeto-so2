@@ -1,28 +1,47 @@
-# projeto-so2
-Projeto desenvolvido em Linux para a disciplina de Sistemas Operacionais II
-
-# Monitoramento de um sistema Ubuntu utilizando collectd, InfluxDB e Grafana
-
 Versões utilizadas neste tutorial
-	Distribuição: Ubuntu 20.04.2 LTS
-	Kernel: Linux 5.8.0-53-generic
+	Distribuição: Arch Linux
+	Kernel: Linux 5.12.3-arch-1
 	
-	collectd: 5.9.2.g-1ubuntu5
-	InfluxDB: 1.8.5-1
-	Grafana: 7.4.3
+	collectd: 5.9.2-1
+	InfluxDB: 1.8.3-1
+	Grafana: 7.4.3-1
+	
+Interface Gráfica:
+	- Antes de iniciar, instale uma interface gráfica de sua preferência:
+		Xfce4:
+			sudo pacman -Syu
+			sudo pacman -S xorg xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
+			sudo systemctl enable lightdm
+			reboot
+			
+		KDE:
+			sudo pacman -Syu
+			sudo pacman -S xorg plasma-meta kde-applications
+			sudo systemctl enable sddm
+			sudo systemctl enable NetworkManager
+			reboot
 
+Baixar os pacotes manualmente no site Arch archive:
+	collectd -> https://archive.archlinux.org/packages/c/collectd/collectd-5.9.2-1-x86_64.pkg.tar.xz
+	InfluxDB -> https://archive.archlinux.org/packages/i/influxdb/influxdb-1.8.3-1-x86_64.pkg.tar.zst
+	Grafana -> https://archive.archlinux.org/packages/g/grafana/grafana-7.4.3-1-x86_64.pkg.tar.zst
+		
 collectd:
 	- Instalação do collectd:
-		sudo apt-get install collectd collectd-utils
-
+		pacman -U /root/Downloads/collectd-5.9.2-1-x86_64.pkg.tar.xz
+					
 	- Baixar o arquivo types.db:
-		sudo mkdir /usr/local/share/collectd
-		sudo wget -P /usr/local/share/collectd https://raw.githubusercontent.com/collectd/collectd/master/src/types.db
+		mkdir /usr/local/share/collectd
+		wget -P /usr/local/share/collectd https://raw.githubusercontent.com/collectd/collectd/master/src/types.db
 		
 	- Configurar o collectd:
-		sudo nano /etc/collectd/collectd.conf
+		nano /etc/collectd.conf
 		
-		- Ativar os seguintes plugins (para ativá-los, basta apagar o símbolo "#" na frente de LoadPlugin):		  
+		- Ativar o FQDNLookup:
+			FQDNLookup	true
+	
+		- Ativar os seguintes plugins (para ativá-los, basta apagar o símbolo "#" na frente de LoadPlugin):	
+			LoadPlugin syslog
 			LoadPlugin cpu
 			LoadPlugin df
 			LoadPlugin disk
@@ -41,7 +60,11 @@ collectd:
 			* Talvez seja necessário configurar o plugin disk manualmente. Para isso, vá até a seção <Plugin disk> e especifique o disco a ser utilizado na opção Disk. 
 
 			* Talvez seja necessário configurar o plugin interface manualmente. Para isso, vá até a seção <Plugin interface> e especifique a interface de rede a ser utilizada na opção Interface. 
-			
+		
+		- "Descomentar" as linhas da seção <Plugin syslog> (basta apagar o símbolo "#"); deve ficar assim:
+			<Plugin syslog>
+				LogLevel info
+			</Plugin>
 		
 		- Ao final do arquivo de configuração, digite o seguinte trecho:
 			<Plugin "network">
@@ -49,17 +72,14 @@ collectd:
 			</Plugin>
 	
 	- Iniciar a unit do collectd:
-		sudo service collectd start
+		systemctl start collectd
 		
 InfluxDB:
 	- Instalação do InfluxDB:
-		wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-		source /etc/lsb-release
-		echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-		sudo apt-get update && sudo apt-get install influxdb
+		pacman -U /root/Downloads/influxdb-1.8.3-1-x86_64.pkg.tar.zst
 		
 	- Iniciar a unit do InfluxDB:
-		sudo service influxdb start
+		systemctl start influxdb
 	
 	- Criar o banco de dados:
 		influx
@@ -67,7 +87,7 @@ InfluxDB:
 		SHOW DATABASES
 			
 	- Configuração do InfluxDB:
-		sudo nano /etc/influxdb/influxdb.conf
+		nano /etc/influxdb/influxdb.conf
 		
 		- Alterar a seção do collectd (lembre-se de "descomentar" as linhas apagando o símbolo "#"):
 			[[collectd]]
@@ -82,21 +102,19 @@ InfluxDB:
 				read-buffer = 0
 	
 	- Reiniciar a unit do InfluxDB:
-		sudo service influxdb restart
+		systemctl restart influxdb
 		
 	- Conferir se o collectd já está enviando as métricas para o InfluxDB:
 		influx
 		USE collectd
 		SHOW MEASUREMENTS
-		
+
 Grafana:
 	- Instalação do Grafana:
-		sudo apt-get install -y adduser libfontconfig1
-		wget https://dl.grafana.com/oss/release/grafana_7.4.3_amd64.deb
-		sudo dpkg -i grafana_7.4.3_amd64.deb
+		pacman -U /root/Downloads/grafana-7.4.3-1-x86_64.pkg.tar.zst
 
 	- Iniciar a unit do Grafana:
-		sudo service grafana-server start
+		systemctl start grafana
 	
 	- Acessar o Grafana, configurar a base de dados para InfluxDB e criar o primeiro gráfico:
 		1. Acesse um navegador web e digite o seguinte endereço na barra de pesquisa: localhost:3000
@@ -113,3 +131,4 @@ Grafana:
 		12. É possível personalizar o gráfico e a maneira como as informações são visualizadas alterando opções no lado direito em "Panel" e "Field"
 		13. Clique em "Apply" para salvar esse painel 
 		14. Clique no símbolo de disquete (Save dashboard) para salvar essa dashboard
+		
