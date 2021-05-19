@@ -12,12 +12,12 @@
       </ul>
     </li>
     <li>
-      <a href="#monitoramento-de-um-sistema-arch-linux">Monitoramento de um sistema Arch Linux</a>
+      <a href="#2-monitoramento-de-um-sistema-arch-linux">Monitoramento de um sistema Arch Linux</a>
     </li>
     <li>
-      <a href="#monitoramento-de-um-sistema-ubuntu">Monitoramento de um sistema Ubuntu</a>
+      <a href="#3-monitoramento-de-um-sistema-ubuntu">Monitoramento de um sistema Ubuntu</a>
     </li>
-    <li><a href="#criar-sua-primeira-dashboard-utilizando-o-grafana">Criar sua primeira dashboard utilizando o Grafana</a></li>
+    <li><a href="#4-criar-sua-primeira-dashboard-utilizando-o-grafana">Criar sua primeira dashboard utilizando o Grafana</a></li>
   </ol>
 </details>
 
