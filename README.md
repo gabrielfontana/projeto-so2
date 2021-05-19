@@ -52,7 +52,7 @@ Arquivo de configuração:
 sudo nano /etc/collectd.conf
 ```
  Após acessar /etc/collect.conf, ative os seguintes plugins (para ativá-los, basta apagar o símbolo "#" na frente de LoadPlugin):
-|                      | Documentação |
+|    Plugin            | Documentação |
 | -------------------- | ------------ |
 | LoadPlugin syslog    |              | 
 | LoadPlugin cpu       |              | 
