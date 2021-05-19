@@ -64,7 +64,7 @@ sudo systemctl enable NetworkManager
 reboot
 ```
 
-Baixe os pacotes manualmente no site Arch archive:
+Baixe os pacotes manualmente no site [Arch archive](https://archive.archlinux.org/):
 
  - [collectd](https://archive.archlinux.org/packages/c/collectd/collectd-5.9.2-1-x86_64.pkg.tar.xz)
  - [InfluxDB](https://archive.archlinux.org/packages/i/influxdb/influxdb-1.8.3-1-x86_64.pkg.tar.zst)
