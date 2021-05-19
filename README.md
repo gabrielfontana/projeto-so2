@@ -1,6 +1,6 @@
 # Projeto de Sistemas Operacionais II
 
-# Monitoramento de um sistema Arch Linux utilizando collect, InfluxDB e Grafana
+# Monitoramento de um sistema Arch Linux utilizando collectd, InfluxDB e Grafana
 
 Versões utilizadas neste tutorial:
 
