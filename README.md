@@ -74,7 +74,7 @@ sudo nano /etc/collectd.conf
 
 ## Grafana
 
-# Monitoramento de um sistema Ubuntu utilizando collect, InfluxDB e Grafana
+# Monitoramento de um sistema Ubuntu utilizando collectd, InfluxDB e Grafana
 	
 ## collectd
 
