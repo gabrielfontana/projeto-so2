@@ -91,12 +91,11 @@ Baixe os pacotes manualmente no site [Arch archive](https://archive.archlinux.or
 
 ## collectd
 
-Instalando o collectd:
+Instalação:
 ```sh
 sudo pacman -U /root/Downloads/collectd-5.9.2-1-x86_64.pkg.tar.xz
 ``` 
-Configurado o collectd:
-
+Configuração:
 - Acesse o arquivo (`/etc/collectd.conf`)
 	- Ative o (`FQDNLookup`):
 		```sh
@@ -140,7 +139,7 @@ Configurado o collectd:
 		</Plugin>
 		```
 
-Iniciando o collectd:
+Inicialização do serviço:
 ```sh
 sudo systemctl start collectd
 sudo systemctl enable collectd
@@ -148,27 +147,27 @@ sudo systemctl enable collectd
 		
 ## InfluxDB
 
-Instalando o InfluxDB:
+Instalação:
 ```sh
 sudo pacman -U /root/Downloads/influxdb-1.8.3-1-x86_64.pkg.tar.zst
 ``` 
-Baixando o arquivo types.db:
+Download do arquivo types.db:
 ```sh
-sudo  mkdir /usr/local/share/collectd
-sudo  wget -P /usr/local/share/collectd https://raw.githubusercontent.com/collectd/collectd/master/src/types.db
+sudo mkdir /usr/local/share/collectd
+sudo wget -P /usr/local/share/collectd https://raw.githubusercontent.com/collectd/collectd/master/src/types.db
 ```
-Iniciando o InfluxDB:
+Inicialização do serviço:
 ```sh
 sudo systemctl start influxdb
 sudo systemctl enable influxdb
 ``` 
-Criando o banco de dados:
+Criação do banco de dados:
 ```sh
 influx
 CREATE DATABASE collectd
 SHOW DATABASES
 ```
-Configurando o InfluxDB:
+Configuração:
 - No arquivo (`/etc/influxdb/influxdb.conf`), encontre a seção (`[[collectd]]`) e a configure desse modo:
 	```sh
 	[[collectd]]
@@ -182,12 +181,12 @@ Configurando o InfluxDB:
 		batch-timeout = "10s"
 		read-buffer = 0
 	```
-Reiniciando o serviço para ele possa reler o arquivo de configuração:
+Reinicialização do serviço para ele possa reler o arquivo de configuração:
 ```sh
 sudo systemctl restart influxdb
 ```
 
-Conferindo se as métricas do collectd já estão sendo enviadas ao InfluxDB:
+Conferir se as métricas do collectd já estão sendo enviadas ao InfluxDB:
 ```sh
 influx
 USE collectd
@@ -224,25 +223,191 @@ users_value
 
 ## Grafana
 
-Instalando o Grafana:
+Instalação:
 ```sh
 sudo pacman -U /root/Downloads/grafana-7.4.3-1-x86_64.pkg.tar.zst
 ```
 
-Iniciando o collectd:
+Inicialização do serviço:
 ```sh
 sudo systemctl start grafana
 ``` 
 
-Clique [aqui](#4-criar-sua-primeira-dashboard-utilizando-o-grafana) para aprender a acessar o Grafana, configurar o InfluxDB como base de dados e criar sua primeira dashboard.
+[Clique aqui](#4-criar-sua-primeira-dashboard-utilizando-o-grafana) para aprender a acessar o Grafana, configurar o InfluxDB como base de dados e criar sua primeira dashboard.
 	
 # 3. Monitoramento de um sistema Ubuntu
 	
 ## collectd
 
+Instalação:
+```sh
+sudo apt-get install collectd collectd-utils
+``` 
+Configuração:
+
+- Acesse o arquivo (`/etc/collectd/collectd.conf`)
+
+	-  Ative os seguintes plugins:	
+		```sh			
+		LoadPlugin cpu
+		LoadPlugin df
+		LoadPlugin disk
+		LoadPlugin entropy
+		LoadPlugin interface
+		LoadPlugin irq
+		LoadPlugin load
+		LoadPlugin memory
+		LoadPlugin network
+		LoadPlugin processes
+		LoadPlugin rrdtool
+		LoadPlugin swap
+		LoadPlugin uptime 
+		LoadPlugin users
+		```
+		> **Observações:** 
+		 > - Para ativá-los, basta apagar o símbolo "#" localizado antes de LoadPlugin). 
+		 > - Talvez seja necessário configurar o plugin disk manualmente. Para isso, vá até a seção  (`<Plugin disk>`) e especifique o disco a ser utilizado na opção (`Disk`).
+		 > - Talvez seja necessário configurar o plugin interface manualmente. Para isso, vá até a seção (`<Plugin interface>`) e especifique a interface de rede a ser utilizada na opção (`Interface`).
+		 > -  Ao desabilitar plugins, certifique-se de também desabilitar os blocos de código associados (se houver).
+		 
+	- Ao final do arquivo de configuração, digite o seguinte bloco:
+		```sh
+		<Plugin "network">
+			Server "127.0.0.1" "25826"
+		</Plugin>
+		```
+
+Inicialização do serviço:
+```sh
+sudo service collectd start
+sudo service collectd enable
+``` 
+
 ## InfluxDB
+
+Instalação:
+```sh
+wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/lsb-release
+echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+sudo apt-get update && sudo apt-get install influxdb
+``` 
+Download do arquivo types.db:
+```sh
+sudo mkdir /usr/local/share/collectd
+sudo wget -P /usr/local/share/collectd https://raw.githubusercontent.com/collectd/collectd/master/src/types.db
+```
+Inicialização do serviço:
+```sh
+sudo service influxdb start
+sudo service influxdb enable
+``` 
+Criação do banco de dados:
+```sh
+influx
+CREATE DATABASE collectd
+SHOW DATABASES
+```
+Configuração:
+- No arquivo (`/etc/influxdb/influxdb.conf`), encontre a seção (`[[collectd]]`) e a configure desse modo:
+	```sh
+	[[collectd]]
+		enabled = true
+		bind-address = ":25826"
+		database = "collectd"
+		retention-policy = ""
+		typesdb = "/usr/local/share/collectd"
+		batch-size = 5000
+		batch-pending = 10
+		batch-timeout = "10s"
+		read-buffer = 0
+	```
+Reinicialização  do serviço para ele possa reler o arquivo de configuração:
+```sh
+sudo service influxdb restart
+```
+
+Conferir se as métricas do collectd já estão sendo enviadas ao InfluxDB:
+```sh
+influx
+USE collectd
+SHOW MEASUREMENTS
+```
+```sh
+# Resultado
+
+> SHOW MEASUREMENTS
+name: measurements
+name
+----
+cpu_value
+df_value
+disk_io_time
+disk_read
+disk_value
+disk_weighted_io_time
+disk_write
+entropy_value
+interface_rx
+interface_tx
+irq_value
+load_longterm
+load_midterm
+load_shortterm
+memory_value
+processes_value
+swap_value
+uptime_value
+users_value
+>
+```
 
 ## Grafana
 
+
+Instalação:
+```sh
+sudo apt-get install -y adduser libfontconfig1
+wget https://dl.grafana.com/oss/release/grafana_7.4.3_amd64.deb
+sudo dpkg -i grafana_7.4.3_amd64.deb
+```
+
+Inicialização do serviço:
+```sh
+sudo systemctl start grafana
+``` 
+
+[Clique aqui](#4-criar-sua-primeira-dashboard-utilizando-o-grafana) para aprender a acessar o Grafana, configurar o InfluxDB como base de dados e criar sua primeira dashboard.
+	
+
 # 4. Criar sua primeira dashboard utilizando o Grafana
 
+1 - Acesse um navegador web e digite o endereço (`localhost:3000`) na barra de pesquisa.
+
+2 - Informe o usuário (`admin`) e a senha (`admin`) para realizar o primeiro login.
+
+3 - Caso queira utilizar outra senha, informe-a a seguir. Caso contrário, clique em "Skip".
+
+4 - Procure pelo símbolo de uma engrenagem (Configuration) no lado esquerdo da tela.
+
+5 - Escolha a opção "Data Sources".
+
+6 - Clique no botão "Add Data Sources" e escolha o InfluxDB.
+
+7 - Abaixo de "HTTP", no campo "URL", digite (`http://localhost:8086`).
+
+8 - No campo "Database", digite o nome do banco de dados criado no Influxdb: (`collectd`).
+
+9 - Para finalizar e salvar, clique em "Save & Test".
+
+10 - Para criar a dashboard, procure pelo símbolo "+" (Create) no lado esquerdo da tela e escolha a opção "Dashboard".
+
+11 - Clique em "Add new panel".
+
+12 - Na seção de "Query", escolha a métrica do sistema que deseja monitorar informando-a em "select_measurement".
+
+13 - Personalize o gráfico e a maneira como as informações são visualizadas alterando opções no lado direito em "Panel" e "Field".
+
+14 - Clique em "Apply" para salvar esse painel.
+
+15 - Clique no símbolo de disquete (Save dashboard) para salvar essa dashboard.
