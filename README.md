@@ -95,6 +95,8 @@ Instalação:
 ```sh
 sudo pacman -U /root/Downloads/collectd-5.9.2-1-x86_64.pkg.tar.xz
 ``` 
+> **Atenção:** o caminho do pacote pode variar, informe-o com base no seu sistema
+
 Configuração:
 - Acesse o arquivo (`/etc/collectd.conf`)
 	- Ative o (`FQDNLookup`):
@@ -151,6 +153,8 @@ Instalação:
 ```sh
 sudo pacman -U /root/Downloads/influxdb-1.8.3-1-x86_64.pkg.tar.zst
 ``` 
+> **Atenção:** o caminho do pacote pode variar, informe-o com base no seu sistema
+
 Download do arquivo types.db:
 ```sh
 sudo mkdir /usr/local/share/collectd
@@ -227,6 +231,7 @@ Instalação:
 ```sh
 sudo pacman -U /root/Downloads/grafana-7.4.3-1-x86_64.pkg.tar.zst
 ```
+> **Atenção:** o caminho do pacote pode variar, informe-o com base no seu sistema
 
 Inicialização do serviço:
 ```sh
