@@ -100,7 +100,7 @@ Configurado o collectd:
 - Acesse o arquivo (`/etc/collectd.conf`)
 	- Ative o (`FQDNLookup`):
 		```sh
-		FQDNLookup	true
+		FQDNLookup true
 		```
 	-  Ative os seguintes plugins:	
 		```sh			
