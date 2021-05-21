@@ -389,50 +389,36 @@ sudo systemctl start grafana
 
 1 - Acesse um navegador web e digite o endereço (`localhost:3000`) na barra de pesquisa.
 ![Imgur](https://i.imgur.com/47yQzL4.png)
-<br/>
 2 - Informe o usuário (`admin`) e a senha (`admin`) para realizar o primeiro login.
 ![Imgur](https://i.imgur.com/C3tMgJM.png)
-<br/>
 3 - Caso queira utilizar outra senha, informe-a a seguir. Caso contrário, clique em "Skip".
 ![Imgur](https://i.imgur.com/mrZ2a9E.png)
-<br/>
 4 - Procure pelo símbolo de uma engrenagem (Configuration) no lado esquerdo da tela. Escolha a opção "Data Sources".
 ![Imgur](https://i.imgur.com/VSA6TPw.png)
-<br/>
 5 - Clique no botão "Add Data Sources"
 ![Imgur](https://i.imgur.com/0eQYeKA.png)
-<br/>
 6 - Vá até o InfluxDB e clique em "Select".
 ![Imgur](https://i.imgur.com/T1qXma4.png)
-<br/>
 7 - Abaixo de "HTTP", no campo "URL", digite (`http://localhost:8086`).
 ![Imgur](https://i.imgur.com/VXGZr8M.png)
-<br/>
- 8 - No campo "Database", digite o nome do banco de dados criado no Influxdb: (`collectd`).
- ![Imgur](https://i.imgur.com/JaJQTUL.png)
-<br/>
+8 - No campo "Database", digite o nome do banco de dados criado no Influxdb: (`collectd`).
+![Imgur](https://i.imgur.com/JaJQTUL.png)
 9 - Para finalizar e salvar, clique em "Save & Test".
 ![Imgur](https://i.imgur.com/q33WQMt.png)
-<br/>
 10 - Para criar a dashboard, procure pelo símbolo "+" (Create) no lado esquerdo da tela e escolha a 
 opção "Dashboard".
 ![Imgur](https://i.imgur.com/I8tjRSp.png)
-<br/>
 11 - Clique em "Add new panel".
 ![Imgur](https://i.imgur.com/5y69SfL.png)
-<br/>
 12 - Na seção de "Query", escolha a métrica do sistema que deseja monitorar informando-a em "select_measurement".
 ![Imgur](https://i.imgur.com/Pu9HWNL.png)
 ![Imgur](https://i.imgur.com/pnXsWNT.png)
-<br/>
 13 - Personalize o gráfico e a maneira como as informações são visualizadas alterando opções no lado direito em "Panel" e "Field".
 ![Imgur](https://i.imgur.com/Zab59IP.png)
 ![Imgur](https://i.imgur.com/N2fHegZ.png)
 ![Imgur](https://i.imgur.com/qBDgMfz.png)
-<br/>
 14 - Clique em "Apply" para salvar esse painel.
 ![Imgur](https://i.imgur.com/OrHyzQf.png)
-<br/>
 15 - Clique no símbolo de disquete (Save dashboard) para salvar essa dashboard.
 ![Imgur](https://i.imgur.com/tNIFS2q.png)
 ![Imgur](https://i.imgur.com/hqZ516y.png)
