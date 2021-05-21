@@ -98,7 +98,7 @@ sudo pacman -U /root/Downloads/collectd-5.9.2-1-x86_64.pkg.tar.xz
 > **Atenção:** o caminho do pacote pode variar, informe-o com base no seu sistema.
 
 Configuração:
-- Acesse o arquivo (`/etc/collectd.conf`)
+- Acesse o arquivo (`/etc/collectd.conf`).
 	- Ative o (`FQDNLookup`):
 		```sh
 		FQDNLookup true
@@ -250,7 +250,7 @@ sudo apt-get install collectd collectd-utils
 ``` 
 Configuração:
 
-- Acesse o arquivo (`/etc/collectd/collectd.conf`)
+- Acesse o arquivo (`/etc/collectd/collectd.conf`).
 
 	-  Ative os seguintes plugins:	
 		```sh			
