@@ -369,7 +369,6 @@ users_value
 
 ## Grafana
 
-
 Instalação:
 ```sh
 sudo apt-get install -y adduser libfontconfig1
