@@ -85,9 +85,9 @@ Com uma máquina Arch já preparada, instale uma interface gráfica de sua prefe
 
 Baixe os pacotes manualmente no site [Arch archive](https://archive.archlinux.org/):
 
- - [collectd](https://archive.archlinux.org/packages/c/collectd/collectd-5.9.2-1-x86_64.pkg.tar.xz)
- - [InfluxDB](https://archive.archlinux.org/packages/i/influxdb/influxdb-1.8.3-1-x86_64.pkg.tar.zst)
- - [Grafana](https://archive.archlinux.org/packages/g/grafana/grafana-7.4.3-1-x86_64.pkg.tar.zst)
+ - [collectd-5.9.2-1-x86_64.pkg.tar.xz](https://archive.archlinux.org/packages/c/collectd/collectd-5.9.2-1-x86_64.pkg.tar.xz)
+ - [influxdb-1.8.3-1-x86_64.pkg.tar.zst](https://archive.archlinux.org/packages/i/influxdb/influxdb-1.8.3-1-x86_64.pkg.tar.zst)
+ - [grafana-7.4.3-1-x86_64.pkg.tar.zst](https://archive.archlinux.org/packages/g/grafana/grafana-7.4.3-1-x86_64.pkg.tar.zst)
 
 ## collectd
 
