@@ -198,7 +198,6 @@ SHOW MEASUREMENTS
 ```
 ```sh
 # Resultado
-
 > SHOW MEASUREMENTS
 name: measurements
 name
@@ -340,7 +339,6 @@ SHOW MEASUREMENTS
 ```
 ```sh
 # Resultado
-
 > SHOW MEASUREMENTS
 name: measurements
 name
