@@ -209,6 +209,7 @@ cpu_value
 df_value
 disk_io_time
 disk_read
+disk_value
 disk_weighted_io_time
 disk_write
 entropy_value
@@ -350,6 +351,7 @@ cpu_value
 df_value
 disk_io_time
 disk_read
+disk_value
 disk_weighted_io_time
 disk_write
 entropy_value
