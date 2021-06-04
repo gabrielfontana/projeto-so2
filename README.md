@@ -137,7 +137,7 @@ Configuração:
 		</Plugin>
 		```		
 
-	- Ao final do arquivo de configuração, digite o seguinte bloco:
+	- Ao final do arquivo (após a configuração do <Plugin "zookeeper">), digite o seguinte bloco:
 		```sh
 		<Plugin "network">
 			Server "127.0.0.1" "25826"
