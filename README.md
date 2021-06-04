@@ -82,10 +82,10 @@ Com uma máquina Arch já preparada, instale uma interface gráfica de sua prefe
 	sudo systemctl enable NetworkManager
 	reboot
 	```
-- Após isso, instale um navegador web:
-	```sh
-	sudo pacman -S firefox
-	```
+Após isso, instale um navegador web:
+```sh
+sudo pacman -S firefox
+```
 
 Baixe os pacotes manualmente no site [Arch archive](https://archive.archlinux.org/):
 
