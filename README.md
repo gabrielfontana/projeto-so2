@@ -82,6 +82,10 @@ Com uma máquina Arch já preparada, instale uma interface gráfica de sua prefe
 	sudo systemctl enable NetworkManager
 	reboot
 	```
+- Após isso, instale um navegador web:
+	```sh
+	sudo pacman -S firefox
+	```
 
 Baixe os pacotes manualmente no site [Arch archive](https://archive.archlinux.org/):
 
@@ -93,7 +97,7 @@ Baixe os pacotes manualmente no site [Arch archive](https://archive.archlinux.or
 
 Instalação:
 ```sh
-sudo pacman -U /root/Downloads/collectd-5.9.2-1-x86_64.pkg.tar.xz
+sudo pacman -U /home/gabriel/Downloads/collectd-5.9.2-1-x86_64.pkg.tar.xz
 ``` 
 > **Atenção:** o caminho do pacote pode variar, informe-o com base no seu sistema.
 
@@ -116,7 +120,6 @@ Configuração:
 		LoadPlugin memory
 		LoadPlugin network
 		LoadPlugin processes
-		LoadPlugin rrdtool
 		LoadPlugin swap
 		LoadPlugin uptime 
 		LoadPlugin users
@@ -151,7 +154,7 @@ sudo systemctl enable collectd
 
 Instalação:
 ```sh
-sudo pacman -U /root/Downloads/influxdb-1.8.3-1-x86_64.pkg.tar.zst
+sudo pacman -U /home/gabriel/Downloads/influxdb-1.8.3-1-x86_64.pkg.tar.zst
 ``` 
 > **Atenção:** o caminho do pacote pode variar, informe-o com base no seu sistema.
 
@@ -227,7 +230,7 @@ users_value
 
 Instalação:
 ```sh
-sudo pacman -U /root/Downloads/grafana-7.4.3-1-x86_64.pkg.tar.zst
+sudo pacman -U /home/gabriel/Downloads/grafana-7.4.3-1-x86_64.pkg.tar.zst
 ```
 > **Atenção:** o caminho do pacote pode variar, informe-o com base no seu sistema.
 
