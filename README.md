@@ -206,7 +206,6 @@ cpu_value
 df_value
 disk_io_time
 disk_read
-disk_value
 disk_weighted_io_time
 disk_write
 entropy_value
@@ -245,6 +244,7 @@ sudo systemctl start grafana
 
 Instalação:
 ```sh
+sudo apt-get update
 sudo apt-get install collectd collectd-utils
 ``` 
 Configuração:
@@ -347,7 +347,6 @@ cpu_value
 df_value
 disk_io_time
 disk_read
-disk_value
 disk_weighted_io_time
 disk_write
 entropy_value
@@ -369,6 +368,7 @@ users_value
 
 Instalação:
 ```sh
+sudo apt-get update
 sudo apt-get install -y adduser libfontconfig1
 wget https://dl.grafana.com/oss/release/grafana_7.4.3_amd64.deb
 sudo dpkg -i grafana_7.4.3_amd64.deb
@@ -376,7 +376,7 @@ sudo dpkg -i grafana_7.4.3_amd64.deb
 
 Inicialização do serviço:
 ```sh
-sudo systemctl start grafana
+sudo service grafana-server start
 ``` 
 
 [Clique aqui](#4-criar-sua-primeira-dashboard-utilizando-o-grafana) para aprender a acessar o Grafana, configurar o InfluxDB como base de dados e criar sua primeira dashboard.
