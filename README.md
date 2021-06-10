@@ -32,7 +32,7 @@ Lançado em 8 de julho de 2005, collectd é um _daemon_ Unix (processo executado
 
 Vantagens importantes em trabalhar com o collectd:
  - Projeto de código aberto: por ser gratuito e estar sempre em desenvolvimento ativo, possui uma presença sólida no mercado de coleta de métricas do sistema.
- - Alto nível de desempenho e portabilidade: é escrito em linguagem C visando consumir o mínimo de recursos possíveis.
+ - Alto nível de desempenho e portabilidade: é escrito em linguagem C visando consumir o mínimo de recursos possível.
  - Extensível: por padrão, o daemon vem com mais de 100 plugins que variam de usos comuns aos especializados e avançados, sendo possível ainda  a criação de novos plugins.
 
 ## InfluxDB
