@@ -1,10 +1,10 @@
 # Projeto de Sistemas Operacionais II
 
 Integrantes do grupo: 
-	- Gabriel Fontana Junqueira Araújo
-	- Pedro Francisco Isaac
-	- Vinicius Jorge de Oliveira
-	- Yuri Sabino do Prado
+- Gabriel Fontana Junqueira Araújo
+- Pedro Francisco Isaac
+- Vinicius Jorge de Oliveira
+- Yuri Sabino do Prado
 
 <details open="open">
   <summary><h2>Tabela de Conteúdos</h2></summary>
